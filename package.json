@@ -1,0 +1,19 @@
+{
+  "name": "litecoinjs",
+  "version": "1.0.0",
+  "description": "Litecoin JS library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/backcopy/litecoinjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/backcopy/litecoinjs/issues"
+  },
+  "homepage": "https://gitlab.com/backcopy/litecoinjs#README"
+}

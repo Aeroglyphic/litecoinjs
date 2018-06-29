@@ -61,7 +61,7 @@ How to run the automated tests for litecoinJS.
 Coming soon
 ```
 
-### And coding style tests
+## Features
 
 
 ```
@@ -93,13 +93,11 @@ Coming soon
 Coming soon
 ```
 
-See also the list of [contributors](/) who participated in this project.
+
 
 ## License
 
-```
-Coming soon
-```
+litecoinJS is licensed under the [MIT license](https://gitlab.com/backcopy/litecoinjs/raw/master/LICENSE).
 
 ## Acknowledgments
 

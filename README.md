@@ -58,7 +58,7 @@ An example function is used for demonstration purposes.
 const litecoinjs = require ('litecoinjs');
 
 async function createNewAddress (){
-    return new Promise((resolve, reject) =>{
+    return new Promise(async (resolve, reject) =>{
     try {
         const address_example = await litecoinjs.newAddress(); 
             resolve(address_example); 
@@ -88,7 +88,7 @@ browserify app.js > bundle.js --insert-globals --standalone litecoinjs
 <script>
 async function yourCustomFunction(){
     try {
-        const exampleAddress = litecoinjs.yourExampleNameForANewAddress(); 
+        const exampleAddress = await litecoinjs.yourExampleNameForANewAddress(); 
             console.log(exampleAddress); 
     } catch (error){
         console.log(`ERROR INSIDE yourCustomFunction MAIN CATCH BLOCK: ${error}`); 

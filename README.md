@@ -2,7 +2,7 @@
 
 **THIS PROJECT IS NOT YET ACTIVE**
 
-litecoinJS is a JavaScript-based implementation of various litecoin functions enabling you to natively create litecoin addresses, sign transactions, create transactions, set custom transaction fees, create smart contracts, store data on the litecoin blockchain and much more.
+litecoinJS is a javascript-based implementation of various litecoin functions enabling you to natively create litecoin addresses, sign transactions, create transactions, set custom transaction fees, create smart contracts, store data on the litecoin blockchain and much more.
 
 litecoinJS is designed to work on both regular client applications like browsers and also conventional server applications using NodeJS.
 
@@ -15,41 +15,126 @@ These instructions will get you a copy of litecoinJS up and running on your loca
 If you are planning to use the NodeJS version of litecoinJS it's advisable that you have the following software and configuration on your machine -
 
 ```
-Coming soon
+NodeJS 8 or higher 
 ```
 
-### Installing
+### Installing with NodeJS
 
-For NodeJS applications you can download the latest version of litecoinJS by running the following command from terminal 
+For NodeJS applications you can download the latest version of litecoinJS by running the following command from terminal - 
 ```
-npm i litecoinjs
-```
-
-Client side applications can download the latest pre-built version of litecoinJS from the following link - 
-```
-Coming soon
+npm install litecoinjs
 ```
 
+
+### Installing with browsers
+Client side applications can build the browser version of litecoinJS using [browserify](http://browserify.org), enabling you to use litecoinJS in the browser, see the guide below - 
+
+#### Create a folder dedicated to litecoinJS
+```
+mkdir example_litecoinjs_project
+```
+```
+cd example_litecoinjs_project
+```
+
+#### Install litecoinJS using NPM
+```
+npm install litecoinjs
+```
+
+#### Install browserify globally using NPM
+```
+npm install -g browserify
+```
+
+#### Create an app.js file 
+```
+touch app.js 
+```
+
+#### Open app.js and include litecoinJS
+An example function is used for demonstration purposes.
+```
+const litecoinjs = require ('litecoinjs');
+
+async function createNewAddress (){
+    return new Promise((resolve, reject) =>{
+    try {
+        const address_example = await litecoinjs.newAddress(); 
+            resolve(address_example); 
+    } catch (error){
+        reject(`ERROR INSIDE createNewAddress MAIN CATCH BLOCK: ${error}`); 
+    }   
+    }) 
+}
+
+module.exports = {
+    yourExampleNameForANewAddress: createNewAddress 
+}
+
+```
+
+#### Use browserify to create a browser version of your litecoinJS project
+```
+browserify app.js > bundle.js --insert-globals --standalone litecoinjs
+```
+
+#### Now you can use litecoinJS in client browsers
+```
+<html>
+<body> 
+<script src="bundle.js"></script>    
+    
+<script>
+async function yourCustomFunction(){
+    try {
+        const exampleAddress = litecoinjs.yourExampleNameForANewAddress(); 
+            console.log(exampleAddress); 
+    } catch (error){
+        console.log(`ERROR INSIDE yourCustomFunction MAIN CATCH BLOCK: ${error}`); 
+    }
+}
+
+</script>    
+</body>
+</html>
+```
+
+
+
+
+## Examples
+All of the following examples are in NodeJS. 
 
 ### Create a litecoin address 
 
-Create a litecoin address via NodeJS - 
 ```
-const litecoin = require('litecoinjs');
+const litecoinjs = require('litecoinjs');
 
-(async () => {
-	try {
-		const address = await litecoin.newPair(); 
-		console.log(address); 
+async function newAddressExample(){
+try {
+    const address = await litecoinjs.newAddress(); 
+        console.log(address); 
 	} catch (error) {
 		console.error(`ERROR: ${error}`);
 	}
-})(); 
+}
+
+newAddressExample(); 
 ```
 
+Once executed, the expected return information would look something like the following - 
+```
+{ address: 'LVZuJ9wD49Wdpvp4NpGoUV3d7mBj1MzKq2',
+  wif: 'T7ubUPfCot9CHBcJ82eHXL4vpr5sVNsogbQ8GoNNVr1u2onzxNWC' }
+```
 
+The `Wallet Import Format (WIF)` is an encoded version of the private key associated with the generated address. 
 
-More info coming soon.
+### Example two is coming soon 
+
+Coming soon. 
+
 
 ## Running the tests
 
@@ -79,7 +164,7 @@ Additional notes about how to deploy this on a live system coming soon.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](/) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/CONTRIBUTING.md) for details on the litecoinJS code of conduct, and the process for submitting pull & merge requests to litecoinJS. 
 
 ## Versioning
 
@@ -92,7 +177,6 @@ Coming soon
 ```
 Coming soon
 ```
-
 
 
 ## License

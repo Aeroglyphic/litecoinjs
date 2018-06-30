@@ -16,7 +16,8 @@ NOTES:
     the private key. 
 */ 
 
-const litecoinjs = require(`${__basedir}/lib/core/index.js`);
+
+const litecoinjs = require('../lib/core/index.js');
 
 function createLitecoinAddressPair(){
     return new Promise((resolve, reject) =>{

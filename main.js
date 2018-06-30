@@ -10,14 +10,13 @@ EXPORTS:
 
 NOTES: No notes. 
 */ 
-const config = require(`${__dirname}/config.js`); 
+const config = require(`./config.js`); 
 
 /* 
 ###################################################
 Set configuration settings 
 ###################################################
 */ 
-config.setGlobalPath(); 
 
 
 
@@ -26,8 +25,12 @@ config.setGlobalPath();
 
 
 
-
+/* 
+###################################################
+Export litecoinJS functions 
+###################################################
+*/ 
 module.exports = {
-    newAddress: require(`${__dirname}/src/address.js`)  
+    newAddress: require(`./src/address.js`)  
 }
 

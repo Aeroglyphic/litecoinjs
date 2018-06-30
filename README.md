@@ -95,6 +95,7 @@ async function yourCustomFunction(){
     }
 }
 
+yourCustomFunction(); 
 </script>    
 </body>
 </html>

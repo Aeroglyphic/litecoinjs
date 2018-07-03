@@ -1,18 +1,22 @@
-# litecoinJS 
+# LitecoinJS 
 
 **THIS PROJECT IS NOT YET ACTIVE**
 
-litecoinJS is a javascript-based implementation of various litecoin functions enabling you to natively create litecoin addresses, sign transactions, create transactions, set custom transaction fees, create smart contracts, store data on the litecoin blockchain and much more.
+LitecoinJS is a javascript-based implementation of various litecoin functions enabling you to natively create litecoin addresses, sign transactions, create transactions, set custom transaction fees, create smart contracts, store data on the litecoin blockchain and much more.
 
-litecoinJS is designed to work on both regular client applications like browsers and also conventional server applications using NodeJS.
+LitecoinJS is designed to work on both regular client applications like browsers and also conventional server applications using NodeJS.
+
+## Don't trust. Verify.
+
+All developers and users of this library are advised to review and verify any underlying code for its validity and suitability. It’s good practice to always verify all cryptography dependencies and the associated codebase with consideration for the potential of backdoors, especially in the form of advanced and hard to spot types like mathematical backdoors.
 
 ## Getting Started
 
-These instructions will get you a copy of litecoinJS up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of LitecoinJS up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-If you are planning to use the NodeJS version of litecoinJS it's advisable that you have the following software and configuration on your machine -
+If you are planning to use the NodeJS version of LitecoinJS it's advisable that you have the following software and configuration on your machine -
 
 ```
 NodeJS 8 or higher 
@@ -20,16 +24,16 @@ NodeJS 8 or higher
 
 ### Installing with NodeJS
 
-For NodeJS applications you can download the latest version of litecoinJS by running the following command from terminal - 
+For NodeJS applications you can download the latest version of LitecoinJS by running the following command from terminal - 
 ```
 npm install litecoinjs
 ```
 
 
 ### Installing with browsers
-Client side applications can build the browser version of litecoinJS using [browserify](http://browserify.org), enabling you to use litecoinJS in the browser, see the guide below - 
+Client side applications can build the browser version of LitecoinJS using [browserify](http://browserify.org), enabling you to use LitecoinJS in the browser, see the guide below - 
 
-#### Create a folder dedicated to litecoinJS
+#### Create a folder dedicated to LitecoinJS
 ```
 mkdir example_litecoinjs_project
 ```
@@ -37,7 +41,7 @@ mkdir example_litecoinjs_project
 cd example_litecoinjs_project
 ```
 
-#### Install litecoinJS using NPM
+#### Install LitecoinJS using NPM
 ```
 npm install litecoinjs
 ```
@@ -52,12 +56,12 @@ npm install -g browserify
 touch app.js 
 ```
 
-#### Open app.js and include litecoinJS
+#### Open app.js and include LitecoinJS
 An example function is used for demonstration purposes.
 ```
-const litecoinjs = require ('litecoinjs');
+const litecoinjs = require('litecoinjs');
 
-async function createNewAddress (){
+async function createNewAddress(){
     return new Promise(async (resolve, reject) =>{
     try {
         const address_example = await litecoinjs.newAddress(); 
@@ -74,12 +78,12 @@ module.exports = {
 
 ```
 
-#### Use browserify to create a browser version of your litecoinJS project
+#### Use browserify to create a browser version of your LitecoinJS project
 ```
 browserify app.js > bundle.js --insert-globals --standalone litecoinjs
 ```
 
-#### Now you can use litecoinJS in client browsers
+#### Now you can use LitecoinJS in client browsers
 ```
 <html>
 <body> 
@@ -135,14 +139,13 @@ Once executed, the expected return information would look something like the fol
 
 The `Wallet Import Format (WIF)` is an encoded version of the private key associated with the generated address. 
 
-### Example two is coming soon 
+### Complete examples and usage 
 
-Coming soon. 
+* [Addresses](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/examples/ADDRESSES.MD) - Generating normal and testnet addresses.
 
+## Running unit tests
 
-## Running the tests
-
-How to run the automated tests for litecoinJS.
+How to run the automated tests for LitecoinJS.
 
 ### Break down into end to end tests
 
@@ -152,14 +155,12 @@ Coming soon
 
 ## Features
 
+* **Addresses**
+	* Generate normal and testnet litecoin addresses.
 
-```
-Coming soon
-```
+## Deployment & Production
 
-## Deployment
-
-Additional notes about how to deploy this on a live system coming soon.
+It’s important to note that LitecoinJS is not anywhere near as extensively tested as the BitcoinJS implementation and might considerably vary in the codebase. You should run extensive testing & verification before deploying anything into production.
 
 ## Built With
 
@@ -168,27 +169,21 @@ Additional notes about how to deploy this on a live system coming soon.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/CONTRIBUTING.md) for details on the litecoinJS code of conduct, and the process for submitting pull & merge requests to litecoinJS. 
+Please read [CONTRIBUTING.md](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/CONTRIBUTING.md) for details on the LitecoinJS code of conduct, and the process for submitting pull & merge requests to LitecoinJS. 
 
 ## Versioning
 
-```
-Coming soon
-```
+No stable release, TBD.
 
 ## Authors
 
-```
-Coming soon
-```
+* Edin Jusupovic 
 
 
 ## License
 
-litecoinJS is licensed under the [MIT license](https://gitlab.com/backcopy/litecoinjs/raw/master/LICENSE).
+LitecoinJS is licensed under the [MIT license](https://gitlab.com/backcopy/litecoinjs/raw/master/LICENSE).
 
 ## Acknowledgments
 
-```
-Coming soon
-```
+No acknowledgments yet. 

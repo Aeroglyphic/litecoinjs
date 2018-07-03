@@ -141,7 +141,7 @@ The `Wallet Import Format (WIF)` is an encoded version of the private key associ
 
 ### Complete examples and usage 
 
-* [Addresses](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/examples/ADDRESSES.MD) - Generating normal and testnet addresses.
+* [Addresses](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/examples/ADDRESSES.md) - Generating normal and testnet addresses.
 
 ## Running unit tests
 

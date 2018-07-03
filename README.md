@@ -88,8 +88,8 @@ browserify app.js > bundle.js --insert-globals --standalone litecoinjs
 <script>
 async function yourCustomFunction(){
     try {
-        const exampleAddress = await litecoinjs.yourExampleNameForANewAddress(); 
-            console.log(exampleAddress); 
+        const exampleAddressPair = await litecoinjs.yourExampleNameForANewAddress(); 
+            console.log(exampleAddressPair); 
     } catch (error){
         console.log(`ERROR INSIDE yourCustomFunction MAIN CATCH BLOCK: ${error}`); 
     }
@@ -114,8 +114,11 @@ const litecoinjs = require('litecoinjs');
 
 async function newAddressExample(){
 try {
-    const address = await litecoinjs.newAddress(); 
-        console.log(address); 
+    const addressPair = await litecoinjs.newAddress();
+    const address = addressPair.address; // Example
+    const wif = addressPair.wif; // Example 
+    
+        console.log(addressPair); 
 	} catch (error) {
 		console.error(`ERROR: ${error}`);
 	}

@@ -10,6 +10,11 @@ LitecoinJS is designed to work on both regular client applications like browsers
 
 All developers and users of this library are advised to review and verify any underlying code for its validity and suitability. It’s good practice to always verify all cryptography dependencies and the associated codebase with consideration for the potential of backdoors, especially in the form of advanced and hard to spot types like mathematical backdoors.
 
+## Features
+
+* **Addresses**
+	* Generate normal and testnet litecoin addresses.
+
 ## Getting Started
 
 These instructions will get you a copy of LitecoinJS up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -152,11 +157,6 @@ How to run the automated tests for LitecoinJS.
 ```
 Coming soon
 ```
-
-## Features
-
-* **Addresses**
-	* Generate normal and testnet litecoin addresses.
 
 ## Deployment & Production
 

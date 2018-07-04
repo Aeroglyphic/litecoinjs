@@ -10,7 +10,12 @@ EXPORTS:
         { address: 'LgMiEEaxEoo9az57c6rjQUaxv3PBXkSjmH',
           wif: 'T39c2aLJLX7n5cu7XuBWvxwygFySapqBwtkDRhuF9PQoC2RRj1UU' 
         }
-
+    (b) createTestLitecoinAddressPair()
+        (b1) Returns a TESTNET litecoin address and the associated WIF,
+        (b2) Real example of returned address pair below: 
+        { address: 'n2ce7iauptE75fcmFVwMaTy4XH76ir3mbn',
+          wif: 'cTL4ddS4bfSTLoGYW31PAhmx873RjSbS98H4523UaeUKmDPifDPL' 
+        }
     
 NOTES: 
     (a) The wallet import format (WIF) is an encoded version of

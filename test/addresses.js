@@ -48,13 +48,13 @@ TEST NETWORK ADDRESSES
 
       
 it('should return .WIF object property', async function() {
-        const address = await litecoinjs.newAddress(); 
+        const address = await litecoinjs.newTestAddress(); 
       expect(address.wif).to.be.a('string');
 });
       
       
 it('should return .ADDRESS object property', async function() {
-        const address = await litecoinjs.newAddress(); 
+        const address = await litecoinjs.newTestAddress(); 
       expect(address.address).to.be.a('string');
 });        
   });

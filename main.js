@@ -33,6 +33,7 @@ Export litecoinJS functions
 */ 
 module.exports = {
     newAddress: require(`./src/address.js`).createLitecoinAddressPair,
-    newTestAddress: require(`./src/address.js`).createTestLitecoinAddressPair 
+    newTestAddress: require(`./src/address.js`).createTestLitecoinAddressPair,
+    newTransaction: require(`./src/transaction_builder.js`)
 }
 

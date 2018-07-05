@@ -76,14 +76,11 @@ The `Wallet Import Format (WIF)` is an encoded version of the private key associ
 
 ## Running unit tests
 
-How to run the automated tests for LitecoinJS.
-
-### Break down into end to end tests
-
+You can execute the included automated unit tests by running the following command - 
 ```
-Coming soon
+npm test 
 ```
-
+ 
 ## Deployment & Production
 
 It’s important to note that LitecoinJS is not anywhere near as extensively tested as the BitcoinJS implementation and might considerably vary in the codebase. You should run extensive testing & verification before deploying anything into production.

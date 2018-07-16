@@ -13,7 +13,7 @@ describe('Generate litecoin addresses', function() {
   describe('newAddress()', function() {
     it('should return a correctly formatted normal network address', async function() {
         const address = await litecoinjs.newAddress(); 
-        const test_address = new RegExp('[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}'); 
+        const test_address = new RegExp('[M][a-km-zA-HJ-NP-Z1-9]{26,33}'); 
         const test_address_result = test_address.test(address.address); 
         
       assert.equal(test_address_result, true);
@@ -40,7 +40,7 @@ TEST NETWORK ADDRESSES
   describe('newTestAddress()', function() {
     it('should return a correctly formatted test network address', async function() {
         const address = await litecoinjs.newTestAddress(); 
-        const test_address = new RegExp('[mn][a-km-zA-HJ-NP-Z1-9]{26,33}'); 
+        const test_address = new RegExp('[Q][a-km-zA-HJ-NP-Z1-9]{26,33}'); 
         const test_address_result = test_address.test(address.address); 
         
       assert.equal(test_address_result, true);

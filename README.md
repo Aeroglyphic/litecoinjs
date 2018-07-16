@@ -64,8 +64,8 @@ newAddressExample();
 
 Once executed, the expected return information would look something like the following - 
 ```
-{ address: 'LVZuJ9wD49Wdpvp4NpGoUV3d7mBj1MzKq2',
-  wif: 'T7ubUPfCot9CHBcJ82eHXL4vpr5sVNsogbQ8GoNNVr1u2onzxNWC' }
+{ address: 'MBeeHGfof2EwNobqyyA5fK6bNRij5CrQAC',
+  wif: 'T43wmV2KzF8qmXXvsRGUeBNS1tSFotzy8jCYQHpX1GWUYFzfnXAu' }
 ```
 
 The `Wallet Import Format (WIF)` is an encoded version of the private key associated with the generated address. 

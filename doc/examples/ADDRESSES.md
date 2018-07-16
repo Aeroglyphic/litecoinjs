@@ -7,7 +7,7 @@
 
 ## Address formatting 
 
-Since litecoinJS is a segwit-first library, it is considered that all non-segwit functions, including non-segwit addresses, are deprecated. Be aware that this does not necessarily mean these standards or functions are deprecated on the litecoin network.
+Since litecoinJS is a segwit-first library, it is considered that all non-segwit functions, including non-segwit addresses, are deprecated. Be aware that this does not necessarily mean these standards or functions are deprecated on the litecoin network. In order to maintain backwards compatability, addresses are P2SH. Currently BECH32 is not supported and there are no plans to support native segwit in this library until more mainstream adoption. 
 
 ### Normal network 
 | Address        | Type           | Network | Status  |

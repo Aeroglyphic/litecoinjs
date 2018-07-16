@@ -4,11 +4,10 @@ PURPOSE: Create litecoin transactions.
 DEPENDENCIES: 
     (a) /lib/core/index.js
     (b) /src/litoshi.js 
+    (c) /transaction_builder/address_conversion.js
 EXPORTS: 
     (a) createTransaction()
-    
-        
-    
+     
 NOTES: No notes.
 */ 
 
@@ -78,15 +77,15 @@ const litecoin_network = (tx_data.network === "normal" ? litecoinjs.networks.lit
                  
 const keyPair = litecoinjs.ECPair.fromWIF(tx_data.wif, litecoin_network); 
            
-var pubKey = keyPair.getPublicKeyBuffer()
-var pubKeyHash = litecoinjs.crypto.hash160(pubKey)
+const pubKey = keyPair.getPublicKeyBuffer()
+const pubKeyHash = litecoinjs.crypto.hash160(pubKey)
 
-var redeemScript = litecoinjs.script.witnessPubKeyHash.output.encode(pubKeyHash); 
-var redeemScriptHash = litecoinjs.crypto.hash160(redeemScript); 
+const redeemScript = litecoinjs.script.witnessPubKeyHash.output.encode(pubKeyHash); 
+const redeemScriptHash = litecoinjs.crypto.hash160(redeemScript); 
 
-var scriptPubKey = litecoinjs.script.scriptHash.output.encode(redeemScriptHash); 
+const scriptPubKey = litecoinjs.script.scriptHash.output.encode(redeemScriptHash); 
 
-var address = litecoinjs.address.fromOutputScript(scriptPubKey, litecoin_network); 
+const address = litecoinjs.address.fromOutputScript(scriptPubKey, litecoin_network); 
 
 let txb = new litecoinjs.TransactionBuilder(litecoin_network);     
 
@@ -103,7 +102,6 @@ await asyncForEach(tx_output_arr, async (tx_create_input_data) => {
 }); 
            
 // Amount to be paid to payment_address(s)            
-//txb.addOutput(tx_data.payment_address, tx_data.amount); 
 await asyncForEach(tx_data.payment_addresses, async (payment_data) => {
     txb.addOutput(payment_data.address, payment_data.amount);
         total_payment_amount += payment_data.amount; 

@@ -21,6 +21,7 @@ All developers and users of this library are advised to review and verify any un
 	* Set custom change addresses.
 	* Transaction batching (multiple inputs, multiple outputs). 
 	* Set custom transaction fees. 
+    
 ## Getting Started
 
 These instructions will get you a copy of LitecoinJS up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.

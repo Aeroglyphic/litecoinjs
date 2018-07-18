@@ -1,6 +1,5 @@
 # LitecoinJS 
 
-
 LitecoinJS is a javascript-based implementation of various litecoin functions enabling you to natively create litecoin addresses, create transactions, set custom transaction fees and more. LitecoinJS is based on the bitcoinjs code base comprising of mostly syntactic functionality tailored for litecoin. 
 
 SegWit is used for all functions including address generation and transaction creation.

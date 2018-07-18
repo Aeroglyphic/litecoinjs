@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://gitlab.com/backcopy/litecoinjs/issues"
   },
-  "homepage": "https://gitlab.com/backcopy/litecoinjs#README",
+  "homepage": "https://gitlab.com/backcopy/litecoinjs/blob/master/README.md",
   "devDependencies": {
     "chai": "^4.1.2",
     "gulp": "^3.9.1",

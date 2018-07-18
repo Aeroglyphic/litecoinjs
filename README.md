@@ -1,8 +1,9 @@
 # LitecoinJS 
 
-**THIS PROJECT IS NOT YET ACTIVE**
 
-LitecoinJS is a javascript-based implementation of various litecoin functions enabling you to natively create litecoin addresses, sign transactions, create transactions, set custom transaction fees, create smart contracts, store data on the litecoin blockchain and much more.
+LitecoinJS is a javascript-based implementation of various litecoin functions enabling you to natively create litecoin addresses, create transactions, set custom transaction fees and more. LitecoinJS is based on the bitcoinjs code base comprising of mostly syntactic functionality tailored for litecoin. 
+
+SegWit is used for all functions including address generation and transaction creation.
 
 LitecoinJS is designed to work on both regular client applications like browsers and also conventional server applications using NodeJS.
 
@@ -15,6 +16,11 @@ All developers and users of this library are advised to review and verify any un
 * **Addresses**
 	* Generate normal and testnet litecoin addresses.
 
+* **Transactions**
+	* Generate normal and testnet litecoin transactions.
+	* Set custom change addresses.
+	* Transaction batching (multiple inputs, multiple outputs). 
+	* Set custom transaction fees. 
 ## Getting Started
 
 These instructions will get you a copy of LitecoinJS up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -73,6 +79,8 @@ The `Wallet Import Format (WIF)` is an encoded version of the private key associ
 ### Complete examples and usage 
 
 * [Addresses](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/examples/ADDRESSES.md) - Generating normal and testnet addresses.
+
+* [Transactions](https://gitlab.com/backcopy/litecoinjs/blob/master/doc/examples/TRANSACTIONS.md) - Generating normal and testnet transactions.
 
 ## Running unit tests
 

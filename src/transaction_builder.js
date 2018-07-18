@@ -22,7 +22,7 @@ ADDRESS: The address executing the transaction.
 CHANGE_ADDRESS: Any excess litoshi are sent to this address. Formula: ((unspent_amount - amount) - fee)
 WIF: The private key (WIF) of the address executing transaction. 
 
-OUTPUTS: An array, with objects containing the txid and txid_index that will be used to 
+UTXO: An array, with objects containing the txid and txid_index that will be used to 
 finance this new transaction. 
 
     (a) See the following example; 
@@ -48,7 +48,7 @@ PAYMENT_ADDRESSES: An array, with objects containing the address and amount that
     
 FEE: The amount of litoshi to set as the fee for this transaction. 
 */ 
-// (network, address, change_address, wif, outputs, payment_address, fee, unspent_amount, amount)
+
 async function createTransaction(tx_data){
     
 /* 
@@ -63,11 +63,11 @@ tx_data.payment_addresses[a].address =  await addressConversion(tx_data.payment_
 if (tx_data.network === "normal"){     
 tx_data.address = await addressConversion(tx_data.address, "normal"); 
 tx_data.change_address = await addressConversion(tx_data.change_address, "normal");
-
+    
 } else if (tx_data.network === "testnet"){
 tx_data.address = await addressConversion(tx_data.address, "testnet"); 
 tx_data.change_address = await addressConversion(tx_data.change_address, "testnet");
-
+    
 };
 
     return new Promise(async (resolve, reject) =>{
@@ -95,7 +95,7 @@ let total_tx_amount = 0;
 let total_payment_amount = 0;         
            
 // Create new transaction by adding outputs from other TX.
-const tx_output_arr = tx_data.outputs;           
+const tx_output_arr = tx_data.utxo;           
 await asyncForEach(tx_output_arr, async (tx_create_input_data) => {
     txb.addInput(tx_create_input_data.txid, tx_create_input_data.txid_index); 
         total_tx_amount += tx_create_input_data.amount; 
@@ -119,7 +119,7 @@ try {
     
 // Sign transaction     
 let current_pos = 0;     
-    await asyncForEach(tx_data.outputs, async (output_tx) => {
+    await asyncForEach(tx_data.utxo, async (output_tx) => {
 txb.sign(current_pos, keyPair, redeemScript, null, output_tx.amount);
     current_pos++;        
 }); 

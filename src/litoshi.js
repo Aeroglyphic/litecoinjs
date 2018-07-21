@@ -10,7 +10,7 @@ NOTES:
     (a) Credit to https://github.com/dawsbot/satoshi-bitcoin
 */ 
 
-const Big = require('big-js');
+const Big = require('big.js');
 
 
 

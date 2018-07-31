@@ -15,6 +15,7 @@ NOTES: No notes.
 const litecoinjs = require('../lib/core/index.js');
 const asyncForEach = require('../lib/asyncForEach.js'); 
 const addressConversion = require('./transaction_builder/address_conversion.js'); 
+const validate = require('../src/validate.js');
 
 /* 
 NETWORK: 'normal' or 'testnet'
@@ -34,7 +35,7 @@ finance this new transaction.
     (b) The txid_index is the index location on the litecoin blockchain of the output used 
     for the corresponding txid, which is the txid property in this object.
 
-PAYMENT_ADDRESSES: An array, with objects containing the address and amount that will be sent.
+OUTPUT: An array, with individual objects containing the address and amount that will be sent.
 
     (a) See the following example; 
     [{
@@ -51,12 +52,15 @@ FEE: The amount of litoshi to set as the fee for this transaction.
 
 async function createTransaction(tx_data){
     
+// Validate test input (TBD, NOT ACTIVE)
+await validate.call(tx_data);
+    
 /* 
 Convert addresses back into older encoding version in order to work with existing codebase. 
 Note: This will need to be fixed in the future. 
 */ 
-for (let a=0;a<tx_data.payment_addresses.length;a++){
-tx_data.payment_addresses[a].address =  await addressConversion(tx_data.payment_addresses[a].address, "normal"); 
+for (let a=0;a<tx_data.output.length;a++){
+tx_data.output[a].address =  await addressConversion(tx_data.output[a].address, "normal"); 
 }  
 
     
@@ -91,7 +95,7 @@ let txb = new litecoinjs.TransactionBuilder(litecoin_network);
 
 // Total transaction amount based on outputs used to fund transaction            
 let total_tx_amount = 0;      
-// Total amount spent based on the tx_data.payment_addresses amount         
+// Total amount spent based on the tx_data.output amount         
 let total_payment_amount = 0;         
            
 // Create new transaction by adding outputs from other TX.
@@ -101,10 +105,10 @@ await asyncForEach(tx_output_arr, async (tx_create_input_data) => {
         total_tx_amount += tx_create_input_data.amount; 
 }); 
            
-// Amount to be paid to payment_address(s)            
-await asyncForEach(tx_data.payment_addresses, async (payment_data) => {
-    txb.addOutput(payment_data.address, payment_data.amount);
-        total_payment_amount += payment_data.amount; 
+// Amount to be paid to output(s)            
+await asyncForEach(tx_data.output, async (output_data) => {
+    txb.addOutput(output_data.address, output_data.amount);
+        total_payment_amount += output_data.amount; 
 });
            
            
@@ -113,7 +117,6 @@ await asyncForEach(tx_data.payment_addresses, async (payment_data) => {
 if (((total_tx_amount - total_payment_amount) - tx_data.fee) > 0){
     txb.addOutput(tx_data.change_address, (total_tx_amount - total_payment_amount) - tx_data.fee);  
 }           
-
 
 try {
     

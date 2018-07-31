@@ -15,8 +15,8 @@ See the table below to get a better understanding of the parameters required.
 | `address` | String | Yes | The funding address.  
 | `change_address` | String | Yes | Excess litecoin left over from the transaction is sent to this address.  
 | `wif` | String | Yes | The WIF associated with the address funding this transaction.
-| `outputs` | Array | Yes | An array containing objects with the UTXO used to fund this transaction.  
-| `payment_addresses` | Array | Yes | An array containing objects with the payment addresses and amounts to be transferred for this transaction. 
+| `utxo` | Array | Yes | An array containing objects with each UTXO used to fund this transaction.  
+| `output` | Array | Yes | An array containing objects with the payment addresses and amounts to be transferred for this transaction. 
 | `fee` | String | Yes | The transaction fee, also known as the miner fee.
 
 ## Parameters explained 
@@ -28,7 +28,7 @@ The `network` parameter can be set as either `normal` for live network transacti
 The `address` parameter must be set as the address funding the transaction. For example, setting `MBeeHGfof2EwNobqyyA5fK6bNRij5CrQAC` would be considered valid only if the address funding your transaction is actually `MBeeHGfof2EwNobqyyA5fK6bNRij5CrQAC`. 
 
 ### `change_address`
-In a lot of cases, the litecoin amount in the UTXO(s) funding your transaction is going to be greater than the transaction amount spent to the set `payment_addresses`. Excess litecoin is sent to the `change_address` specified, in most circumstances, the `change_address` is the same as the address funding the transaction. 
+In a lot of cases, the litecoin amount in the UTXO(s) funding your transaction is going to be greater than the transaction amount spent to the set `output`. Excess litecoin is sent to the `change_address` specified, in most circumstances, the `change_address` is the same as the address funding the transaction. 
 
 ### `wif`
 In this library, the private key to the address funding a transaction is encoded as a WIF, also known as the Wallet Import Format, this is done to make the private key easier to read without compromising on security or integrity. The `wif` must match the corresponding `address`. 
@@ -45,15 +45,15 @@ The transaction ID corresponding with the unspent output.
 | `txid_index` | String | The index value of this UTXO.  
 | `amount` | Number | The amount of litecoin present at this UTXO **IN LITOSHI** formatting.
 
-### `payment_addresses`
-In this library, the `payment_addresses` parameter is an array containing objects defining each potential payment address, allowing for easy transaction batching, enabling you to consume `outputs` and send to as many addresses as required. See the parameter properties for `payment_addresses` objects below. 
+### `output`
+In this library, the `output` parameter is an array containing objects defining each potential output with the payment addresses (and other related output data). Multiple new outputs can be created in a single transaction allowing for easy transaction batching, enabling you to consume outputs from previous transactions and send to as many addresses as required. See the parameter properties for `output` objects below. 
 
-####  `payment_addresses` object parameters 
+####  `output` object parameters 
 
 | Parameter name | Type | Description
 | :-------------: |:-------------:| :-------------:| 
-| `address` | String | The payment address.   
-| `amount` | String | The amount of **LITOSHI** to pay this address.
+| `address` | String | The litecoin address.   
+| `amount` | String | The amount of **LITOSHI** to pay this address/output.
 
 ### `fee`
 The transaction fee for this transaction in **LITOSHI**. 
@@ -62,12 +62,12 @@ The transaction fee for this transaction in **LITOSHI**.
 # Considerations
 
 ## Transaction amount 
-The total sum of all transaction payment amounts set in the `payment_addresses` object **including the transaction fee** must be equal to or less than the amount specified in the UTXOs provided for a transaction. 
+The total sum of all payment amounts set in the `output` object **including the transaction fee** must be equal to or less than the amount specified in the UTXOs provided for a transaction. 
 
 ## Change amount 
-The change amount is calculated by taking all the `payment_addresses` amounts and subtracting the transaction fee from the total  `utxo` amounts provided. If the remaining amount is greater than 0, the remaining amount is considered 'change' and will be forwarded to the specified `change_address` set in your parameters. 
+The change amount is calculated by taking all the `output` amounts and subtracting the transaction fee from the total  `utxo` amounts provided. If the remaining amount is greater than 0, the remaining amount is considered 'change' and will be forwarded to the specified `change_address` set in your parameters. 
 
-It's possible to manually create a change amount by setting a custom `payment_addresses` object with a predetermined change amount using your own calculations. 
+It's possible to manually create a change amount by setting a custom `output` object with a predetermined change amount using your own calculations. 
 
 
 # Generating litecoin transactions
@@ -91,7 +91,7 @@ await litecoinjs.newTransaction({
        txid_index: 1,
        amount: 300000 // unspent amount 
     }],
-    payment_addresses: [{
+    output: [{
        address: 'MNZnbtzP6CqxUb2EqxRyov1i18NEgpZ5ek',
        amount: 299000 
     }],
@@ -133,7 +133,7 @@ await litecoinjs.newTransaction({
        txid_index: 1,
        amount: 300000 // unspent amount 
     }],
-    payment_addresses: [{
+    output: [{
        address: 'MNZnbtzP6CqxUb2EqxRyov1i18NEgpZ5ek',
        amount: 74750
     }, 
@@ -188,7 +188,7 @@ await litecoinjs.newTransaction({
        txid_index: 0,
        amount: 25000 // unspent amount 
     }],
-    payment_addresses: [{
+    output: [{
        address: 'MNZnbtzP6CqxUb2EqxRyov1i18NEgpZ5ek',
        amount: 12250
     }, 
